@@ -1,38 +1,124 @@
-.App {
-  text-align: center;
+.parent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.poke-displayer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    flex-wrap: wrap;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.basic-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 400px;
+    margin: 10px;
+    border-radius: 10px;
+    border: solid 1px #000;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.card-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}.search-bar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50px;
 }
-
-.App-link {
-  color: #61dafb;
+.search{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    font-size: 2em;
+    border-top : solid 1px #000;
+    border-bottom : solid 1px #000;
+    margin-bottom : 25px;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.grass{
+    background-color: rgba(0, 128, 0, 0.6);
+}
+.fire{
+    background-color: rgba(255, 0, 0, 0.6);
+}
+.water{
+    background-color: rgba(0, 0, 255, 0.6);
+}
+.electric{
+    background-color: rgba(255, 255, 0, 0.6);
+}
+.normal{
+    background-color: rgba(182, 178, 179, 0.6);
+    color: black;
+}
+.poison{
+    background-color: rgba(128, 0, 128, 0.6);
+}
+.fighting{
+    background-color: rgba(165, 42, 42, 0.6);
+}
+.flying{
+    background-color: rgba(255, 166, 0, 0.6);
+    color: black;
+}
+.psychic{
+    background-color: rgba(255, 192, 203, 0.6);
+    color: black;
+}
+.bug{
+    background-color: rgba(153, 205, 50, 0.6);
+}
+.rock{
+    background-color: rgba(165, 42, 42, 0.6);
+}
+.ghost{
+    background-color: rgba(128, 0, 128, 0.6);
+}
+.dark{
+    background-color: rgba(0, 0, 0, 0.6);
+}
+.ice{
+    background-color: rgba(0, 0, 255, 0.6);
+}
+.dragon{
+    background-color: rgba(255, 166, 0, 0.6);
+    color: black;
+}
+.steel{
+    background-color: rgba(192, 192, 192, 0.6);
+    color: black;
+}
+.fairy{
+    background-color: rgba(255, 192, 203, 0.6);
+    color: black;
+}
+.ground{
+    background-color: rgba(210, 182, 92, 0.6);
+}
+.poke-name{
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.poke-type{
+    font-size: 1em;
+}
+.poke-img{
+    width: 200px;
+    height: 200px;
 }
