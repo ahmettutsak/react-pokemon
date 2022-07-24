@@ -56,19 +56,21 @@
 }
 .fire{
     background-color: rgba(255, 0, 0, 0.6);
+    color: white;
 }
 .water{
     background-color: rgba(0, 0, 255, 0.6);
+    color: white;
 }
 .electric{
     background-color: rgba(255, 255, 0, 0.6);
 }
 .normal{
     background-color: rgba(182, 178, 179, 0.6);
-    color: black;
 }
 .poison{
     background-color: rgba(128, 0, 128, 0.6);
+    color: white;
 }
 .fighting{
     background-color: rgba(165, 42, 42, 0.6);
@@ -89,12 +91,15 @@
 }
 .ghost{
     background-color: rgba(128, 0, 128, 0.6);
+    color: white;
 }
 .dark{
     background-color: rgba(0, 0, 0, 0.6);
+    color: white;
 }
 .ice{
     background-color: rgba(0, 0, 255, 0.6);
+    color: white;
 }
 .dragon{
     background-color: rgba(255, 166, 0, 0.6);
@@ -117,6 +122,7 @@
 }
 .poke-type{
     font-size: 1em;
+    font-weight: bold;
 }
 .poke-img{
     width: 200px;

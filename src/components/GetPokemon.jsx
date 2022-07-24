@@ -60,24 +60,25 @@ React.useEffect(() => {
     getAllPokemons();
   }, [allPokemons, pokemons]);
 
-  const basicPokeCard = pokemons.map((pokemon) => {
+
+   if(pokemons.length === 1154) {
+    const basicPokeCard = pokemons.map((pokemon) => {
     return (
       <div className="basic-card" key={pokemon.id}>
         <div className="card-image">
           <img className='poke-img' src={pokemon.sprites.front_default} alt={pokemon.name} />
         </div>
         <div className={`card-content ${pokemon.types[0].type.name}`}>
-          <h3 className='poke-name'>{pokemon.name}</h3>
+          <h2 className='poke-name'>{pokemon.name}</h2>
           <h4 className="poke-id">#{pokemon.id}</h4>
           <p className='poke-type'>{pokemon.types[0].type.name}</p>
         </div>
       </div>
-    )
-  }
-  )
-
-  return (
-    <div className='poke-displayer'>
+        )
+      }
+      )
+      return (
+        <div className='poke-displayer'>
       <div className='search-bar'>
         <input className='search' type='text' placeholder='Search for a Pokemon' onChange={searchPoke} />
       </div>
@@ -85,5 +86,9 @@ React.useEffect(() => {
       <div>
       </div>
     </div>
-  )
+      );
+    }
+    else {
+      return <div><h1>Loading...</h1></div>
+    }
 }
