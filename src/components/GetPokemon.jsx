@@ -1,10 +1,12 @@
 import React from 'react'
+import { motion } from 'framer-motion'
 
 export default function GetPokemon() {
 
   const [allPokemons, setAllPokemons] = React.useState([]);
   const [pokemons, setPokemons] = React.useState([]);
   const [filterekPokemon, setFilterekPokemon] = React.useState([]);
+  const [deneme, setDeneme] = React.useState(null);
 
   const getAllPokemons = async () => {
     if(allPokemons.length === 0 ) {
@@ -40,8 +42,15 @@ const searchPoke = (e) => {
   setFilterekPokemon(filteredPoke)
 }
 
+
+// filtered card displayer
 const renderFilteredPoke = filterekPokemon.map(pokemon => {
-      return <div className="basic-card" key={pokemon.id}>
+      return <motion.div 
+        className="basic-card" 
+        key={pokemon.id}
+        whileHover={{ scale: 1.1 }}
+        onClick={event => handleClick(event, pokemon.name)}
+        >
       <div className="card-image">
         <img className='poke-img' src={pokemon.sprites.front_default} alt={pokemon.name} />
       </div>
@@ -50,7 +59,7 @@ const renderFilteredPoke = filterekPokemon.map(pokemon => {
         <h4 className="poke-id">#{pokemon.id}</h4>
         <p className='poke-type'>{pokemon.types[0].type.name}</p>
       </div>
-    </div>
+    </motion.div>
     }
   )
 
@@ -60,11 +69,65 @@ React.useEffect(() => {
     getAllPokemons();
   }, [allPokemons, pokemons]);
 
+  // advanced card displayer
+  const handleClick = (event, param) => {
+    const tr = pokemons.find(pokemon => pokemon.name === param);
+    console.log(tr);
+     setDeneme(
+      <div 
+        className="adv-card"
+        onClick={() => setDeneme(null)}        
+        >
+        <div className="card">
+        <div className="card-image">
+          <img className='poke-img' src={tr.sprites.front_default} alt={tr.name} />
+        </div>
+        <div className={`card-content ${tr.types[0].type.name}`}>
+          <h3 className='poke-name'>{tr.name}</h3>
+          <h4 className="poke-id">#{tr.id}</h4>
+          <div className='poke-stats-container'>
+          <div className='poke-stats'>
+              <p className='poke-stat-name'>HP</p>
+              <p className='poke-stat-value'>{tr.stats[5].base_stat}</p>
+            </div>
+            <div className='poke-stats'>
+              <p className='poke-stat-name'>Attack</p>
+              <p className='poke-stat-value'>{tr.stats[4].base_stat}</p>
+            </div>
+            <div className='poke-stats'>
+              <p className='poke-stat-name'>Defense</p>
+              <p className='poke-stat-value'>{tr.stats[3].base_stat}</p>
+            </div>
+            <div className='poke-stats'>
+              <p className='poke-stat-name'>Sp. Attack</p>
+              <p className='poke-stat-value'>{tr.stats[2].base_stat}</p>
+            </div>
+            <div className='poke-stats'>
+              <p className='poke-stat-name'>Sp. Defense</p>
+              <p className='poke-stat-value'>{tr.stats[1].base_stat}</p>
+            </div>
+            <div className='poke-stats'>
+              <p className='poke-stat-name'>Speed</p>
+              <p className='poke-stat-value'>{tr.stats[0].base_stat}</p>
+            </div>
+          </div>
+          <p className='poke-type'>{tr.types[0].type.name}</p>
+        </div>
+        </div>
+      </div>
+    )
+  };
 
+  // basic card displayer
    if(pokemons.length === 1154) {
     const basicPokeCard = pokemons.map((pokemon) => {
     return (
-      <div className="basic-card" key={pokemon.id}>
+      <motion.div 
+        className="basic-card" 
+        key={pokemon.id}
+        whileHover={{ scale: 1.1 }}
+        onClick={event => handleClick(event, pokemon.name)}        
+        >
         <div className="card-image">
           <img className='poke-img' src={pokemon.sprites.front_default} alt={pokemon.name} />
         </div>
@@ -73,7 +136,7 @@ React.useEffect(() => {
           <h4 className="poke-id">#{pokemon.id}</h4>
           <p className='poke-type'>{pokemon.types[0].type.name}</p>
         </div>
-      </div>
+      </motion.div>
         )
       }
       )
@@ -82,7 +145,8 @@ React.useEffect(() => {
       <div className='search-bar'>
         <input className='search' type='text' placeholder='Search for a Pokemon' onChange={searchPoke} />
       </div>
-      {filterekPokemon.length > 0 ? renderFilteredPoke : basicPokeCard}
+        {deneme ? deneme : null}
+        {filterekPokemon.length > 0 ? renderFilteredPoke : basicPokeCard}
       <div>
       </div>
     </div>
