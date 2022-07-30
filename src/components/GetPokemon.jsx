@@ -1,6 +1,5 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-
 export default function GetPokemon() {
 
   const [allPokemons, setAllPokemons] = React.useState([]);
@@ -46,7 +45,7 @@ const searchPoke = (e) => {
 // filtered card displayer
 const renderFilteredPoke = filterekPokemon.map(pokemon => {
       return <motion.div 
-        className="basic-card" 
+        className={`basic-card ${pokemon.types[0].type.name}`}
         key={pokemon.id}
         whileHover={{ scale: 1.1 }}
         onClick={event => handleClick(event, pokemon.name)}
@@ -54,15 +53,16 @@ const renderFilteredPoke = filterekPokemon.map(pokemon => {
       <div className="card-image">
         <img className='poke-img' src={pokemon.sprites.front_default} alt={pokemon.name} />
       </div>
-      <div className={`card-content ${pokemon.types[0].type.name}`}>
-        <h3 className='poke-name'>{pokemon.name}</h3>
+      <div className={`card-content`}>
+        <h3 className='poke-name'>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h3>
         <h4 className="poke-id">#{pokemon.id}</h4>
-        <p className='poke-type'>{pokemon.types[0].type.name}</p>
+        <p className='poke-type'>{`Type: ${pokemon.types[0].type.name.charAt(0).toUpperCase() + pokemon.types[0].type.name.slice(1)}`}</p>
       </div>
     </motion.div>
     }
   )
 
+// TODO!: Refactor display names and types to be more readable
 
 
 React.useEffect(() => {
@@ -72,7 +72,6 @@ React.useEffect(() => {
   // advanced card displayer
   const handleClick = (event, param) => {
     const tr = pokemons.find(pokemon => pokemon.name === param);
-    console.log(tr);
      setDeneme(
       <div 
         className="adv-card"
@@ -83,8 +82,9 @@ React.useEffect(() => {
           <img className='poke-img' src={tr.sprites.front_default} alt={tr.name} />
         </div>
         <div className={`card-content ${tr.types[0].type.name}`}>
-          <h3 className='poke-name'>{tr.name}</h3>
+          <h3 className='poke-name'>{tr.name.charAt(0).toUpperCase() + tr.name.slice(1)}</h3>
           <h4 className="poke-id">#{tr.id}</h4>
+          <p className='poke-type'>{`Type: ${tr.types[0].type.name.charAt(0).toUpperCase() + tr.types[0].type.name.slice(1)}`}</p>
           <div className='poke-stats-container'>
           <div className='poke-stats'>
               <p className='poke-stat-name'>HP</p>
@@ -111,7 +111,6 @@ React.useEffect(() => {
               <p className='poke-stat-value'>{tr.stats[0].base_stat}</p>
             </div>
           </div>
-          <p className='poke-type'>{tr.types[0].type.name}</p>
         </div>
         </div>
       </div>
@@ -123,18 +122,21 @@ React.useEffect(() => {
     const basicPokeCard = pokemons.map((pokemon) => {
     return (
       <motion.div 
-        className="basic-card" 
+        className={`basic-card ${pokemon.types[0].type.name}`} 
         key={pokemon.id}
-        whileHover={{ scale: 1.1 }}
+        initial={{ pathLength: 0 }}
+        whileHover={{scale: 1.1, pathLength: 1}}
         onClick={event => handleClick(event, pokemon.name)}        
         >
         <div className="card-image">
-          <img className='poke-img' src={pokemon.sprites.front_default} alt={pokemon.name} />
+          <div className={`backlight`}>
+            <img className='poke-img' src={pokemon.sprites.front_default} alt={pokemon.name} />
+          </div>
         </div>
-        <div className={`card-content ${pokemon.types[0].type.name}`}>
-          <h2 className='poke-name'>{pokemon.name}</h2>
+        <div className={`card-content`}>
           <h4 className="poke-id">#{pokemon.id}</h4>
-          <p className='poke-type'>{pokemon.types[0].type.name}</p>
+          <h2 className='poke-name'>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h2>
+          <p className='poke-type'>{`Type: ${pokemon.types[0].type.name.charAt(0).toUpperCase() + pokemon.types[0].type.name.slice(1)}`}</p>
         </div>
       </motion.div>
         )
