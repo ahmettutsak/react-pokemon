@@ -5,7 +5,7 @@ export default function Pokemon() {
   return (
     
     <div className='parent'>
-        <h1>Pokemon</h1>
+        <h1>Pokedex</h1>
         <GetPokemon />
     </div>
   )

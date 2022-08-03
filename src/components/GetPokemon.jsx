@@ -55,7 +55,6 @@ const renderFilteredPoke = filterekPokemon.map(pokemon => {
       </div>
       <div className={`card-content`}>
         <h3 className='poke-name'>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h3>
-        <h4 className="poke-id">#{pokemon.id}</h4>
         <p className='poke-type'>{`Type: ${pokemon.types[0].type.name.charAt(0).toUpperCase() + pokemon.types[0].type.name.slice(1)}`}</p>
       </div>
     </motion.div>
@@ -87,14 +86,17 @@ React.useEffect(() => {
           <p className='poke-type'>{`Type: ${tr.types[0].type.name.charAt(0).toUpperCase() + tr.types[0].type.name.slice(1)}`}</p>
           <div className='poke-stats-container'>
           <div className='poke-stats'>
+              <img src='https://flyclipart.com/thumb2/electrocardiogram-in-electrocardiogram-heart-rate-icon-with-png-856418.png' alt='heart' width={45} height={30}/>
               <p className='poke-stat-name'>HP</p>
               <p className='poke-stat-value'>{tr.stats[5].base_stat}</p>
             </div>
             <div className='poke-stats'>
+              <img src='https://freesvg.org/img/lightning.png' alt='lightning' width={30} height={30}/>
               <p className='poke-stat-name'>Attack</p>
               <p className='poke-stat-value'>{tr.stats[4].base_stat}</p>
             </div>
             <div className='poke-stats'>
+              <img src='http://cdn.onlinewebfonts.com/svg/img_187806.png' alt='shield' width={30} height={30}/>
               <p className='poke-stat-name'>Defense</p>
               <p className='poke-stat-value'>{tr.stats[3].base_stat}</p>
             </div>
@@ -124,17 +126,13 @@ React.useEffect(() => {
       <motion.div 
         className={`basic-card ${pokemon.types[0].type.name}`} 
         key={pokemon.id}
-        initial={{ pathLength: 0 }}
-        whileHover={{scale: 1.1, pathLength: 1}}
+        whileHover={{scale: 1.1}}
         onClick={event => handleClick(event, pokemon.name)}        
         >
         <div className="card-image">
-          <div className={`backlight`}>
             <img className='poke-img' src={pokemon.sprites.front_default} alt={pokemon.name} />
-          </div>
         </div>
         <div className={`card-content`}>
-          <h4 className="poke-id">#{pokemon.id}</h4>
           <h2 className='poke-name'>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h2>
           <p className='poke-type'>{`Type: ${pokemon.types[0].type.name.charAt(0).toUpperCase() + pokemon.types[0].type.name.slice(1)}`}</p>
         </div>

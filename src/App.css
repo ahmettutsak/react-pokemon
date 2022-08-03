@@ -181,10 +181,21 @@
     align-items: center;
     justify-content: center;
     width: 7em;
-    height: 7em;
+    height: 9em;
     margin: 10px;
     border-radius: 10px;
-    border: solid 1px #000;
+    background-color: white;
+}
+.poke-stat-name{
+    font-size: 1em;
+    margin: .5em;
+    color: black;
+}
+.poke-stat-value{
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: .5em;
+    color: black;
 }
 .backlight{
     position: relative;
